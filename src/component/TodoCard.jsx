@@ -71,6 +71,7 @@ function TodoCard({ task, status, id, date, completed }) {
       border="1px solid gray"
       mt="5px "
       style={store.darkTheme ? { background: "#B39DDB" } : null}
+      
     >
       <Flex>
         <Box>

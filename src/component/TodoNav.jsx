@@ -10,7 +10,7 @@ export const TodoNav = () => {
     const dispatch = useDispatch();
 
     const gradientStyle = {
-      backgroundImage: 'linear-gradient(45deg, orange, yellow)',
+      backgroundImage: "linear-gradient(304deg, rgba(245,162,6,1) 0%, rgba(237,255,0,0.6000525210084033) 100%)",
       WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     };

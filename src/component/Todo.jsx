@@ -16,9 +16,10 @@ export const Todo = () => {
       <br/>
       <TodoInput/>
       <br/>
-      <TodoList/>
-      <br/>
       <TodoFilter/>
+     
+      <TodoList/>
+      
     </Box>
   )
 }
