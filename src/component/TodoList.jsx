@@ -7,7 +7,8 @@ export const TodoList = () => {
   const todoStore = useSelector((s) => s.todoReducer);
   return (
     <Box>
-      {todoStore.todo?.map((item) => {
+      {todoStore.todo.slice()
+    .reverse()?.map((item) => {
         return <TodoCard key={item.task} {...item} />;
       })}
     </Box>
