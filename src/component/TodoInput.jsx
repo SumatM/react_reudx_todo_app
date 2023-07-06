@@ -13,7 +13,6 @@ export const TodoInput = () => {
   const dispatch = useDispatch();
 
   function handleChange(e){
-    console.log(e.target.value)
     setTask((task)=>e.target.value)
   }
 
