@@ -26,7 +26,7 @@ export const TodoNav = () => {
         <Box>
           <Heading letterSpacing='5px' style={store.darkTheme? gradientStyle : null}>TODO</Heading>
         </Box>
-        <Box display="grid" placeItems="center"  onClick={handleTheme}>
+        <Box  display="grid" placeItems="center"  onClick={handleTheme} _hover={{cursor:"pointer"}}>
           {!store.darkTheme ? (
             <FaMoon  size="20px" />
           ) : (

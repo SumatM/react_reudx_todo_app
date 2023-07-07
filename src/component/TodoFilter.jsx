@@ -1,39 +1,55 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { actionClearTodo, actionFilterTodo } from "../redux/action/action";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const TodoFilter = () => {
   const todoStore = useSelector((s) => s.todoReducer);
   const todos = todoStore?.backupTodo || [];
   const dispatch = useDispatch();
+  const [allRef, setallRef] = useState(true);
+  const [activeRef, setActiveRef] = useState(false);
+  const [completedRef, setCompletedRef] = useState(false);
 
   function handleActive() {
     let active = todos.filter((item) => !item.status);
     //console.log(active);
+    setCompletedRef(false)
+    setActiveRef(true)
+    setallRef(false)
     dispatch(actionFilterTodo(active));
   }
 
   function handleAll() {
-   // console.log(todos);
+    // console.log(todos);
+    setCompletedRef(false)
+    setActiveRef(false)
+    setallRef(true)
     dispatch(actionFilterTodo(todos));
   }
 
   function handleCompleted() {
     let completed = todos.filter((item) => item.status);
-   // console.log(completed);
+    // console.log(completed);
+    setCompletedRef(true)
+    setActiveRef(false)
+    setallRef(false)
     dispatch(actionFilterTodo(completed));
   }
 
   function handleClearCompleted() {
-   if (window.confirm('Are you sure you want to delete these item?')) {
+    if (window.confirm("Are you sure you want to delete these item?")) {
       let completed = todos.filter((item) => !item.status);
-    //console.log(completed);
-    dispatch(actionClearTodo(completed));
+      //console.log(completed);
+      dispatch(actionClearTodo(completed));
     }
-  
-    
   }
+
+  const liveSign = {color:'#6A1B9A',fontWeight:"1000"}
+
+  useEffect(()=>{
+      handleAll()
+  },[])
 
   return (
     <Box bg="green.400" p="10px">
@@ -57,6 +73,7 @@ export const TodoFilter = () => {
             fontWeight="500"
             _hover={{ cursor: "pointer" }}
             onClick={handleAll}
+            style={allRef ? liveSign : null}
           >
             All
           </Text>
@@ -64,6 +81,7 @@ export const TodoFilter = () => {
             fontWeight="500"
             _hover={{ cursor: "pointer" }}
             onClick={handleActive}
+            style={activeRef ? liveSign : null}
           >
             Active
           </Text>
@@ -71,6 +89,7 @@ export const TodoFilter = () => {
             fontWeight="500"
             _hover={{ cursor: "pointer" }}
             onClick={handleCompleted}
+            style={completedRef ? liveSign : null}
           >
             Completed
           </Text>
