@@ -19,6 +19,7 @@ function App() {
     <Box
       className="App"
       style={store.darkTheme ? dark : light}
+      h='100vh'
       pt="20vh"
       pb="38vh"
     >
